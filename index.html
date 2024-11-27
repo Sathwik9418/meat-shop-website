@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meat Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero-header">
+        <div class="logo" style="background-color: white;">
+            Logo
+        </div>
+        <nav>
+            <a href="#prod">Products</a>
+            <a href="#odop">About Us</a>
+            <a href="#foot">Contact Us</a>
+        </nav>
+        <div class="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+
+    <section class="hero">
+        <img src="assets/hero-image.jpeg" alt="Fresh Mutton" class="hero-image">
+        <div class="hero-content">
+          <h1>Welcome to Fresh Mutton Shop</h1>
+          <p>Experience the finest cuts of mutton, fresh and delicious, delivered straight from farm to table.</p>
+          <a href="#prod" class="button">View Products</a>
+          <a href="#foot" class="button">Contact Us</a>
+        </div>
+      </section>
+      
+
+
+
+    <section class="district-products" id="prod">
+        <h2>Our Products</h2>
+        <div class="product-scroll-container">
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="assets/mutton.jpeg" alt="mutton">
+                    <h3>Mutton</h3>
+                    <p>Freshly cut, high-quality mutton for all your cooking needs.</p>
+                </div>
+                <div class="product-card">
+                    <img src="assets/mutton-boneless.jpeg" alt="mutton-boneless">
+                    <h3>Boneless Mutton</h3>
+                    <p>Perfectly trimmed boneless mutton for effortless cooking.</p>
+                </div>
+                <div class="product-card">
+                    <img src="assets/minced-meat.jpeg" alt="minced-meat">
+                    <h3>Minced Mutton</h3>
+                    <p>Freshly ground mutton, perfect for kebabs, curries, and more.</p>
+                </div>
+            </div>
+        </div>
+      </section>
+
+
+
+    <section class="about-odop" id="odop">
+        <h2>About Us</h2>
+        <p>
+            At Fresh Mutton Shop, we prioritize quality and freshness above all else. 
+            Our meats are sourced from trusted local farms and are prepared with care 
+            to bring you the best taste and texture for your dishes.
+        </p>
+    </section>
+    
+
+    
+    
+
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <img src="assets/testimonial1.jpg" alt="Customer 1" class="testimonial-image">
+                <p>"The mutton I bought was incredibly fresh and tender. It made my curry absolutely delicious!"</p>
+                <h3>Asha</h3>
+                <p>Satisfied Customer</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="assets/testimonial1.jpg" alt="Customer 2" class="testimonial-image">
+                <p>"The boneless mutton is perfect for all my recipes. I always find top-quality cuts here."</p>
+                <h3>Ravi</h3>
+                <p>Happy Shopper</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="assets/testimonial1.jpg" alt="Customer 3" class="testimonial-image">
+                <p>"Their mutton liver is absolutely fresh and rich in flavor. It's a staple in my kitchen now!"</p>
+                <h3>Priya</h3>
+                <p>Loyal Customer</p>
+            </div>
+        </div>
+    </section>
+    
+    
+
+
+    <footer id="foot">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@muttonshop-telangana.com</p>
+                <p>Phone: +91 987 654 3210</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-media">
+                    <a href="#"><img src="assets/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="assets/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#"><img src="assets/instagram-icon.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Mutton Shop, Telangana. All rights reserved.</p>
+            <p>&copy; Built by Sathwik Enjamuri</p>
+        </div>
+    </footer>
+    
+    
+
+
+    <script>
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navMenu = document.querySelector('nav');
+        const tooltip = document.getElementById('tooltip');
+    
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    
+        document.querySelectorAll('area').forEach(area => {
+            area.addEventListener('mouseover', function(event) {
+                tooltip.textContent = this.title;
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
+                tooltip.style.top = event.pageY - tooltip.offsetHeight - 10 + 'px'; // Position above
+                tooltip.style.left = event.pageX - tooltip.offsetWidth / 2 + 'px'; // Center it
+            });
+    
+            area.addEventListener('mousemove', function(event) {
+                tooltip.style.top = event.pageY - tooltip.offsetHeight - 10 + 'px'; // Adjust to follow mouse
+                tooltip.style.left = event.pageX - tooltip.offsetWidth / 2 + 'px'; // Center it
+            });
+    
+            area.addEventListener('mouseout', function() {
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+            });
+        });
+
+
+        const scrollContainer = document.querySelector('.product-scroll-container');
+const productCards = document.querySelectorAll('.product-card');
+const cardWidth = productCards[0].offsetWidth; // Get the width of a single card
+const totalCards = productCards.length;
+let currentIndex = 0;
+
+function autoScroll() {
+    // Scroll to the next card
+    currentIndex++;
+    
+    // If we've reached the end, loop back to the start
+    if (currentIndex >= totalCards) {
+        currentIndex = 0;
+    }
+
+    // Scroll to the next card position
+    scrollContainer.scrollTo({
+        left: currentIndex * cardWidth,
+        behavior: 'smooth'
+    });
+
+    // Call this function again after a set interval
+    setTimeout(autoScroll, 1200); // Change the interval as needed
+}
+
+// Start the automatic scrolling
+autoScroll();
+
+
+    </script>
+    
+</body>
+</html>
